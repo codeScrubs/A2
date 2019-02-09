@@ -16,8 +16,8 @@ public class VotingApplication {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String pathCandidates= "./src/A_2/candidate.txt"; 
-		String pathVoters = "./src/A_2/voters.txt"; 
+		String pathCandidates= "./src/A_2/candidate.txt"; //POSSIBLY BAD PATHING?
+		String pathVoters = "./src/A_2/voters.txt"; //I WANT PATHING THAT CAN WORK EVEN WHEN ON ANOTHER PC
 		Candidate[] candidates =null;
 		Voter[] voters =null;
 		try{
@@ -91,10 +91,11 @@ public class VotingApplication {
 
 		return voters;		
 	}
+///////////////////*************************************FROM HERE**************************************/////////////
 	
 	public static Candidate getWinner(Candidate[] candids, Voter[] voters){
 		//TODO
-		int b1Count =0;
+		int b1Count =0;//counts how many times a certain vote is cast
 		int b2Count =0;
 		int b3Count =0;
 		int b4Count =0;
@@ -104,7 +105,7 @@ public class VotingApplication {
 										//use voters.length in order to go through all voter entries
 			if (candids[x].getCode() == 1) {//getCode pulls KeyCode from candidate.java this is needed to 
 											//assign a correct key to each bucket
-				int key = 1;
+				int key = 1;//value to distinguish the key for the bucket
 				Bucket b1 = new Bucket(Voter.getTotal(), key);
 				/*use voters.getTotal() because there is a chance that all
 				 * voters have voted for the same candidate
@@ -112,7 +113,7 @@ public class VotingApplication {
 				if(voters[x].getVote() == 1) {
 					b1.add(voters[x]);	
 				}
-				b1Count = b1.getSize();
+				b1Count = b1.getSize();//getSize gets total amount of elements that b1 has
 			}
 			if (candids[x].getCode() == 2) {
 				int key = 2;
@@ -159,12 +160,12 @@ public class VotingApplication {
 				b5Count = b5.getSize();
 			}
 		}
-		int returnIndex = 0;
-		int index = 0 ;
-		int key = 1;
+		int returnIndex = 0;//used to store the element value that will show which is the highest number
+		int index = 0 ;//used to store the first value of the array that will be used to compare
+		int key = 1;//key variable made to for comparison purposes later, set to 1 for default mostVotes
 		int bucketCount[] = {b1Count,b2Count,b3Count,b4Count,b5Count};
-		int mostVotes = bucketCount[index];
-		for (int y=1;y<Candidate.getTotalCandidates();y++) {
+		int mostVotes = bucketCount[index];//first element is set to mostVotes by default
+		for (int y=1;y<Candidate.getTotalCandidates();y++) {//checks rest of array for higher values
 			if (bucketCount[y] > mostVotes) {
 				mostVotes = bucketCount[y];
 				if (y == 2) {
@@ -189,6 +190,7 @@ public class VotingApplication {
 
 	return candids[returnIndex];
 	}
-	
+
+//////////////////////////////////******************TO HERE*****************************************/////////////////////////////////
 
 }
