@@ -1,5 +1,8 @@
 package A_2;
-
+/*
+The purpose of this is to gather up all the votes and all the possible candidates (from the provided text files) and then
+sort them with bucket sorting. After that is done, see which candidate won the election.
+**/
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
